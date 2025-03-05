@@ -1,10 +1,10 @@
-mod lib;
+mod tests;
 use octocrab::Octocrab;
 use regex::Regex;
 use std::env;
 use std::error::Error;
 
-use lib::fibonacci;
+use tests::lib::fibonacci;
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
     // GitHub API token and repository details
@@ -22,11 +22,12 @@ async fn main() -> Result<(), Box<dyn Error>> {
     println!("Repository Name: {}", repo_name);
     println!("Pull Request Number: {}", pull_number);
 
-    // Initialize Octocrab (GitHub API client)
     let octocrab = Octocrab::builder()
-        .personal_token(github_token)
-        .build()?;
+    .personal_token(github_token.to_string())
+    .build()?;
 
+// Fetch your user information
+//let user = octocrab.current().user().await?;
     // Fetch the pull request diff
     let pull_request = octocrab
         .pulls(repo_owner, repo_name)
