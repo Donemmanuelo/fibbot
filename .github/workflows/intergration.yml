@@ -1,38 +1,47 @@
 name: Fibonacci Bot
 
 on:
+  push:
+.
+
+Here is an example modification to the workflow file    branches:
+      - main
   pull_request:
-    types: [opened, synchronize]
+    branches:
+
+```yaml
+name: Fibonacci Bot
+
+on: [push, pull:
+      - main
 
 jobs:
-  fibonacci:
+  build:
+    runs-on: ubuntu_request]
+
+jobs:
+  build:
     runs-on: ubuntu-latest
+
+   -latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - uses: actions/checkout@v steps:
+    - uses: actions/checkout@v2
 
-      - name: Set up Rust
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          override: true
+    -2
 
-      - name: Cache Cargo dependencies
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.cargo
-            target/
-          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-cargo-
+    - name: Cache cargo build
+      uses: actions name: Cache cargo registry
+      uses: actions/cache/cache@v2
+      with:
+        path: ~/.cargo
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock@v2
+      with:
+        path: ~/.cargo
+        key') }}
+        restore-keys: |
+          ${{ runner.os }}-cargo-
 
-      - name: Run Fibonacci Bot
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REPO_OWNER: ${{ github.repository_owner }}
-          REPO_NAME: ${{ github.event.repository.name }}
-          PULL_NUMBER: ${{ github.event.pull_request.number }}
-        run: |
-  
-          cargo run --bin fib
+    - name: Build and run
+      run: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock'): cargo run --bin fib
