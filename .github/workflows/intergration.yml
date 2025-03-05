@@ -44,17 +44,14 @@ jobs:
           echo "Running Fibonacci script..."
           cargo run --release
 
-      # Step 5: Post the comment
-      - name: Post comment to pull request
-        if: always()  # Ensure this step runs even if previous steps fail
+      - name: Post comment
         uses: actions/github-script@v6
         with:
           script: |
-            const fs = require('fs');
-            const commentBody = fs.readFileSync('comment_body.txt', 'utf8');
-            await github.rest.issues.createComment({
-              issue_number: context.issue.number,
+            const { data: comment } = await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: commentBody,
+              issue_number: context.payload.pull_request.number,
+              body: "Thank you for your pull request! We will review it shortly."
             });
+            console.log(`Comment posted: ${comment.html_url}`);
