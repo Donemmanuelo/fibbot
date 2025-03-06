@@ -1,7 +1,7 @@
 name: Fibonacci Comment Workflow
 
 on:
-  push:
+  pull_request:
 jobs:
   fibonacci-comment:
     runs-on: ubuntu-latest
@@ -54,12 +54,6 @@ jobs:
           max_threshold: 100
           enable_fib: true  
       
-      - name: Get Pull Request Number
-        id: pr
-        run: echo "::set-output name=pull_number::$(gh pr view --json number -q .number || echo "")"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: running  code
         run: |
           echo "Running Fibonacci script..."
