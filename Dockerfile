@@ -6,9 +6,9 @@ COPY . .
 
 RUN cargo build --release 
 
-RUN apt-get update && apt-get install libssl-dev
-
 FROM debian:latest
+
+RUN apt-get update && apt-get install libssl-dev -y
 
 COPY --from=builder /app/target/release/fib /app/fib
 
