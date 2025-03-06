@@ -33,35 +33,38 @@ jobs:
         uses: docker/login-action@v2
         with:  
           registry: ghcr.io 
-          username: ${{ vars.REPOSITORY }}
+          username: ${{ secrets.REPOSITORY }}
           password: ${{ secrets.GITHUB_TOKEN}}
           
      
       - name: Run Fibonacci script
         uses: ./
-        with:
-          max_threshold: 100
-          enable_fib: true  
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}  
           GITHUB_REPOSITORY_NAME: ${{ github.event.repository.name }}  
           GITHUB_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}  # Pull request number
+        with:
+          max_threshold: 100
+          enable_fib: true  
+          target: ghcr.io/${{ secrets.REPOSITORY }}/area-image:latest  # Target image to slim
+        
       - name: running  code
         run: |
           echo "Running Fibonacci script..."
           cargo run --release
-
-
       - name: Slim Docker image
         uses: kitabisa/docker-slim-action@v1
         env:
           DSLIM_HTTP_PROBE: "false"  # Disables HTTP probing during slimming
         with:
-          target: ghcr.io/${{ vars.REPOSITORY }}/area-image:latest  # Target image to slim
+          target: ghcr.io/${{ secrets.REPOSITORY }}/area-image:latest  # Target image to slim
           tag: slim  # Suffix for the slimmed image tag
 
       - name: Push slimmed Docker image
         run: |
-          docker push ghcr.io/${{ vars.REPOSITORY }}/area-image:slim
+          docker push ghcr.io/${{ secrets.REPOSITORY }}/area-image:slim
+        
+
+          
         
