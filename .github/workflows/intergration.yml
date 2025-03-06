@@ -6,6 +6,7 @@ jobs:
   fibonacci-comment:
     runs-on: ubuntu-latest
 
+
     steps:
       - name: checkout code
         uses: actions/checkout@v4
@@ -34,23 +35,19 @@ jobs:
           registry: ghcr.io 
           username: ${{ vars.REPOSITORY }}
           password: ${{ secrets.GITHUB_TOKEN}}
-           
-      - name: Build Docker image
-        run: |
-             docker build -t ghcr.io/${{ vars.REPOSITORY }}/area-image:latest .
-              
-      - name: calling input 
-        uses: octo-org/fibbot/.github/workflows/intergration.yml@main
+          
+     
+      - name: Run Fibonacci script
+        uses: ./
         with:
           max_threshold: 100
-          enable_fib: true
-      - name: Run Fibonacci script
+          enable_fib: true  
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}  
           GITHUB_REPOSITORY_NAME: ${{ github.event.repository.name }}  
           GITHUB_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}  # Pull request number
-
+      - name: running  code
         run: |
           echo "Running Fibonacci script..."
           cargo run --release
