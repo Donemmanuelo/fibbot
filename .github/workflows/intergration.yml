@@ -32,7 +32,18 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libssl-dev pkg-config
-
+      - uses: docker/login-action@v3
+        with:
+          username: ${{ vars.REPOSITORY }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v5
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: <your-repo>:<your-tag>
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
       - name: calling input 
         uses: octo-org/fibbot/.github/workflows/intergration.yml@main
         with:
@@ -40,7 +51,7 @@ jobs:
           enable_fib: true
       - name: Run Fibonacci script
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub token for authentication
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}  # Repository owner
           GITHUB_REPOSITORY_NAME: ${{ github.event.repository.name }}  # Repository name
           GITHUB_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}  # Pull request number
