@@ -46,7 +46,7 @@ println!("Authenticated User: {:?}", user.login);
 //let user = octocrab.current().user().await?;
     // Fetch the pull request diff
     let pull_request = octocrab
-        .pulls(repo_owner, repo_name)
+        .pulls(&repo_owner, &repo_name)
         .get(pull_number)
         .await?;
  let diff_url = pull_request.diff_url.ok_or("No diff URL found")?;
@@ -64,7 +64,7 @@ println!("Diff URL: {:?}", diff_url);
 
     // Fetch the pull request files
     let files = octocrab
-        .pulls(repo_owner, repo_name)
+        .pulls(&repo_owner, &repo_name)
         .list_files(pull_number)
         .await?;
 

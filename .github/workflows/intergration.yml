@@ -47,23 +47,26 @@ jobs:
         with:
           max_threshold: 100
           enable_fib: true  
-          target: ghcr.io/${{ secrets.REPOSITORY }}/area-image:latest  # Target image to slim
+          # Target image to slim
         
       - name: running  code
         run: |
           echo "Running Fibonacci script..."
           cargo run --release
+      - name: build docker image
+        run: |
+             docker build -t ghcr.io/${{ secrets.REPOSITORY }}/fibbot:latet
       - name: Slim Docker image
         uses: kitabisa/docker-slim-action@v1
         env:
           DSLIM_HTTP_PROBE: "false"  # Disables HTTP probing during slimming
         with:
-          target: ghcr.io/${{ secrets.REPOSITORY }}/area-image:latest  # Target image to slim
+          target: ghcr.io/${{ secrets.REPOSITORY }}/fibbot:latest  # Target image to slim
           tag: slim  # Suffix for the slimmed image tag
 
       - name: Push slimmed Docker image
         run: |
-          docker push ghcr.io/${{ secrets.REPOSITORY }}/area-image:slim
+          docker push ghcr.io/${{ secrets.REPOSITORY }}/fibbot:slim
         
 
           
