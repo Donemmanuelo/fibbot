@@ -5,6 +5,8 @@ on:
 jobs:
   fibonacci-comment:
     runs-on: ubuntu-latest
+    permissions: 
+       packages: read
 
 
     steps:
@@ -35,10 +37,12 @@ jobs:
           registry: ghcr.io 
           username: ${{ secrets.REPOSITORY }}
           password: ${{ secrets.GITHUB_TOKEN}}
-          
-      - name: pull number 
-        run: | 
-         echo "the pull_number is ${{ github.event.pull_request.number }}"
+      - name: Get Pull Request Number
+        id: pull_number
+        run: echo "::set-output name=pull_request_number::$(echo "${{ github.event.head_commit.message }}" | awk -F"[\\#)]" '{print $2}')"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
       - name: Run Fibonacci script
         uses: donemmanuelo/fibbot@rus
         env:
