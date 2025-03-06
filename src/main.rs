@@ -11,7 +11,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let github_token = env::var("GITHUB_TOKEN").expect("GITHUB_TOKEN not set");
     let repo_owner = env::var("GITHUB_REPOSITORY_OWNER").expect("GITHUB_REPOSITORY_OWNER not set");
     let repo_name = env::var("GITHUB_REPOSITORY_NAME").expect("GITHUB_REPOSITORY_NAME not set");
-    let pull_number = env::var("GITHUB_PULL_REQUEST_NUMBER").expect("GITHUB_PULL_REQUEST_NUMBER");               // Replace with your pull request number
+    let pull_number = env::var("GITHUB_PULL_REQUEST_NUMBER").expect("GITHUB_PULL_REQUEST_NUMBER not set");               // Replace with your pull request number
 
     // Parameters
     let max_threshold = env::var("INPUT_MAX_THRESHOLD").expect("INPUT_MAX_THRESHOLD not set");      // Maximum number for Fibonacci computation
@@ -20,7 +20,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let enable_fib: bool = enable_fib.trim().parse().expect("enable_fib not set ");
     println!("GitHub Token: {}", &github_token);
 
-    let pull_number= pull_number.trim().parse().expect("pull_number not set");
+    let pull_number: u64 = pull_number.trim().parse().expect("pull_number not set");
 
     println!("Repository Owner: {}", repo_owner);
   
