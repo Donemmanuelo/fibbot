@@ -36,7 +36,9 @@ jobs:
           username: ${{ secrets.REPOSITORY }}
           password: ${{ secrets.GITHUB_TOKEN}}
           
-     
+      - name: pull number 
+        run: | 
+         echo "the pull_number is ${{ github.event.pull_request.number }}"
       - name: Run Fibonacci script
         uses: donemmanuelo/fibbot@rus
         env:
@@ -47,7 +49,6 @@ jobs:
         with:
           max_threshold: 100
           enable_fib: true  
-          # Target image to slim
       
       - name: Work around spurious network errors in curl 8.0
         run: |
