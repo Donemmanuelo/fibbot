@@ -32,11 +32,13 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libssl-dev pkg-config
-      - uses: docker/login-action@v3
+      - name: authenticate
+        uses: docker/login-action@v3
         with:
           username: ${{ vars.REPOSITORY }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - uses: docker/build-push-action@v5
+      - name: build docker image
+        uses: docker/build-push-action@v5
         with:
           context: .
           platforms: linux/amd64,linux/arm64
