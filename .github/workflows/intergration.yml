@@ -38,7 +38,7 @@ jobs:
           
      
       - name: Run Fibonacci script
-        uses: donemmanuelo/fibbot@main
+        uses: donemmanuelo/fib@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}  
