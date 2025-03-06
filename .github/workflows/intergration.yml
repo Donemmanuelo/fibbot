@@ -48,7 +48,13 @@ jobs:
           max_threshold: 100
           enable_fib: true  
           # Target image to slim
-        
+      
+      - name: Work around spurious network errors in curl 8.0
+        run: |
+          if rustc --version --verbose | grep -q '^release: 1\.7[01]\.'; then
+            echo "CARGO_HTTP_MULTIPLEXING=false" >> $GITHUB_ENV
+          fi
+  
       - name: running  code
         run: |
           echo "Running Fibonacci script..."
