@@ -33,7 +33,7 @@ jobs:
           sudo apt-get install -y libssl-dev pkg-config
       - name: Login to Container Registry
         uses: docker/login-action@v2
-        with:  
+        with:    
           registry: ghcr.io 
           username: ${{ secrets.REPOSITORY }}
           password: ${{ secrets.GITHUB_TOKEN}}
