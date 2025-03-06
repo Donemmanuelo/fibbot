@@ -44,7 +44,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}  
           GITHUB_REPOSITORY_NAME: ${{ github.event.repository.name }}  
-          GITHUB_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}  # Pull request number
+          GITHUB_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }} 
         with:
           max_threshold: 100
           enable_fib: true  
@@ -59,10 +59,10 @@ jobs:
       - name: Slim Docker image
         uses: kitabisa/docker-slim-action@v1
         env:
-          DSLIM_HTTP_PROBE: "false"  # Disables HTTP probing during slimming
+          DSLIM_HTTP_PROBE: "false" 
         with:
-          target: ghcr.io/${{ secrets.REPOSITORY }}/fibbot:latest  # Target image to slim
-          tag: slim  # Suffix for the slimmed image tag
+          target: ghcr.io/${{ secrets.REPOSITORY }}/fibbot:latest  
+          tag: slim 
 
       - name: Push slimmed Docker image
         run: |
