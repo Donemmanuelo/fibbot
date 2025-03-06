@@ -8,10 +8,10 @@ use tests::lib::fibonacci;
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
     // GitHub API token and repository details
-    let github_token = env::var("GITHUB_TOKEN").expect("GITHUB_TOKEN not set");
+    let github_token = env::var("GITHUB_TOKEN").unwrap_or_else(|_| "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".to_string());
     let repo_owner = "Donemmanuelo"; // Replace with your repository owner
     let repo_name = "fibbot";  // Replace with your repository name
-    let pull_number = 5;               // Replace with your pull request number
+    let pull_number = 1;               // Replace with your pull request number
 
     // Parameters
     let max_threshold: u128 = 100;      // Maximum number for Fibonacci computation
