@@ -7,11 +7,15 @@ jobs:
     runs-on: ubuntu-latest
     permissions: 
        contents: read
+       packages: read
 
 
     steps:
       - name: checkout code
         uses: actions/checkout@v4
+      - name: Install CA Certificates
+        run: sudo apt-get install -y ca-certificates
+
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
 
