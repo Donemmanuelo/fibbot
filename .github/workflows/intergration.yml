@@ -13,11 +13,18 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v4
-      - name: Install CA Certificates
-        run: sudo apt-get install -y ca-certificates
-
+      
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
+
+      - name: Update and upgrade packages
+        run: sudo apt-get update && sudo apt-get upgrade -y
+
+      - name: Install CA certificates
+        run: sudo apt-get install -y ca-certificates
+
+      - name: Set SSL_CERT_FILE
+        run:
 
       - name: Cache cargo registry and build
         uses: actions/cache@v4
