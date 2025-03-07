@@ -37,6 +37,11 @@ jobs:
           registry: ghcr.io 
           username: ${{ secrets.REPOSITORY }}
           password: ${{ secrets.GITHUB_TOKEN}}
+      - name: Workaround for curl network errors
+        run: |
+          if rustc +stable --version --verbose | grep -q '^release: 1\.7[01]\.'; then
+            echo CARGO_HTTP_MULTIPLEXING=false >> $GITHUB_ENV
+          fi
 
       - name: Run Fibonacci script
         uses: donemmanuelo/fibbot@rus
