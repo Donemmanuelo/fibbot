@@ -7,8 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions: 
        contents: read
-       packages: read
-
 
     steps:
       - name: checkout code
@@ -16,9 +14,6 @@ jobs:
       
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
-
-      - name: Update and upgrade packages
-        run: sudo apt-get update && sudo apt-get upgrade -y
 
       - name: Cache cargo registry and build
         uses: actions/cache@v4
