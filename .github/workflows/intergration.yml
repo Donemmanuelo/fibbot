@@ -42,11 +42,11 @@ jobs:
       - name: Run Fibonacci script
         uses: donemmanuelo/fibbot@rus
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}  
           GITHUB_REPOSITORY_NAME: ${{ github.event.repository.name }}  
           GITHUB_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }} 
-        with:
+          with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
           max_threshold: 100
           enable_fib: true  
       
