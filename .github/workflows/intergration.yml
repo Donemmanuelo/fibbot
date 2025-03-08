@@ -39,16 +39,17 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN}}
      
       - uses: actions/checkout@v2
+      - uses: rust-lang/setup-rust@v1
       - name: Run Fibonacci script
         uses: donemmanuelo/fibbot@rus
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+          GITHUB_TOKEN: ${{ secrets.TOKEN }} 
           max_threshold: '100'
           enable_fib: 'true'
         env:
-          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}  
-          GITHUB_REPOSITORY_NAME: ${{ github.event.repository.name }}  
-          GITHUB_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }} 
+            GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}  
+            GITHUB_REPOSITORY_NAME: ${{ github.event.repository.name }}  
+            GITHUB_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }} 
       
       - name: build docker image
         run: |
