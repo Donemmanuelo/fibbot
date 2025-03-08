@@ -5,9 +5,13 @@ inputs:
     description: 'The maximum numerical value for which Fibonacci will be computed.'
     required: true
     type: number
-    default: '100'
   enable_fib:
     description: 'Whether to enable posting the Fibonacci comment (true/false).'
     required: true
     type: boolean
-    default: 'true'
+runs: 
+  using: 'docker' 
+  image: 'Dockerfile'
+  args: 
+  - ${{ inputs.enable_fib }}
+  - ${{ inputs.max_threshold }}

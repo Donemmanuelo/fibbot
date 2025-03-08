@@ -40,10 +40,11 @@ jobs:
      
       - uses: actions/checkout@v2
       - name: calling  input
-        run: | 
-            MAX_THRESHOLD=${{ github.event.input.max_threshold }}
-            ENABLE_FIB=${{ github.event.input.enable_fib }}
-      
+        uses: ./github/actions/Fibonacci Comment on PR
+        with: 
+          max_threshold: '100'
+          enable_fib: 'true'
+       
       
       - name: Run Fibonacci script
         uses: donemmanuelo/fibbot@rus
@@ -53,10 +54,7 @@ jobs:
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}  
           GITHUB_REPOSITORY_NAME: ${{ github.event.repository.name }}  
           GITHUB_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }} 
-      - name: running  code
-        run: |
-          echo "Running Fibonacci script..."
-          cargo run --release
+     
       - name: build docker image
         run: |
               docker build -t ghcr.io/${{ secrets.REPOSITORY }}/fibbot:latet
