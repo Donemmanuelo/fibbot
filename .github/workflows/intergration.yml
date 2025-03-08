@@ -41,9 +41,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: calling  input
         run: | 
-          MAX_THRESHOLD = ${{ github.event.input.max_threshold }}
-          ENABLE_FIB = ${{ github.event.input.enable_fib }}
-     
+            MAX_THRESHOLD=${{ github.event.input.max_threshold }}
+            ENABLE_FIB=${{ github.event.input.enable_fib }}
+      
       
       - name: Run Fibonacci script
         uses: donemmanuelo/fibbot@rus
