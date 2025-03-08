@@ -16,7 +16,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     // Parameters
     let max_threshold = env::var("INPUT_MAX_THRESHOLD").expect("INPUT_MAX_THRESHOLD not set");      // Maximum number for Fibonacci computation
     let enable_fib = env::var("INPUT_ENABLE_FIB").expect("INPUT_ENABLE_FIB not set");      
-    let max_threshold = max_threshold.trim().parse().expect("max_threshold not set");
+    let max_threshold: u128 = max_threshold.trim().parse().expect("max_threshold not set");
     let enable_fib: bool = enable_fib.trim().parse().expect("enable_fib not set ");
     println!("GitHub Token: {}", &github_token);
 
