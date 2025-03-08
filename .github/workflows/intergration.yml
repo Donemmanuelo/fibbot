@@ -40,7 +40,7 @@ jobs:
      
 
       - name: passing  value to input
-        uses: ./
+        uses: actions/checkout@v2
         with: 
           args: '-
             MAX_THRESHOLD ${{ env.max_threshold }}-
