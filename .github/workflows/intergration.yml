@@ -39,6 +39,12 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN}}
      
 
+      - name: passing  value to input
+        uses: ./action.yml
+        with: 
+          max_threshold: 100
+          enable_fib: true  
+              
       - name: Run Fibonacci script
         uses: donemmanuelo/fibbot@rus
         env:
@@ -47,12 +53,6 @@ jobs:
           GITHUB_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }} 
           with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
-      - name: passing  value to input
-        uses: ./action.yml
-        with: 
-          max_threshold: 100
-          enable_fib: true  
-              
       - name: running  code
         run: |
           echo "Running Fibonacci script..."
