@@ -99,7 +99,6 @@ println!("Diff URL: {:?}", diff_url);
         }
         println!("comment body: {}", comment_body);
 
-       
         octocrab
             .issues(repo_owner, repo_name)
             .create_comment(pull_number, comment_body)
