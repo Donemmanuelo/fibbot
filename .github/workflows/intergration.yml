@@ -38,32 +38,28 @@ jobs:
           username: ${{ secrets.REPOSITORY }}
           password: ${{ secrets.GITHUB_TOKEN}}
      
-
-      - name: passing  value to input
-        uses: actions/checkout@v2
-        with: 
-          args: '-
-            max_threshold ${{ env.max_threshold }}-
-            enable_fib ${{ env.enable_fib }}'
-        env:
-          max_threshold: 100
-          enable_fib: true  
-                
+      - uses: actions/checkout@v2
+      - name: calling  input
+        run: | 
+          MAX_THRESHOLD = ${{ github.event.input.max_threshold }}
+          ENABLE_FIB = ${{ github.event.input.enable_fib }}
+     
+      
       - name: Run Fibonacci script
         uses: donemmanuelo/fibbot@rus
+        with:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         env:
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}  
           GITHUB_REPOSITORY_NAME: ${{ github.event.repository.name }}  
           GITHUB_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }} 
-          with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
       - name: running  code
         run: |
           echo "Running Fibonacci script..."
           cargo run --release
       - name: build docker image
         run: |
-             docker build -t ghcr.io/${{ secrets.REPOSITORY }}/fibbot:latet
+              docker build -t ghcr.io/${{ secrets.REPOSITORY }}/fibbot:latet
       - name: Slim Docker image
         uses: kitabisa/docker-slim-action@v1
         env:
