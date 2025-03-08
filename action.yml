@@ -1,4 +1,4 @@
-name: 'Fibonacci Comment on PR'
+name: 'Fibonacci Comment On Pr'
 description: 'Posts a comment on a PR with the Fibonacci of numerical values in the diff.'
 inputs:
   max_threshold:
