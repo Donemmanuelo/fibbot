@@ -40,7 +40,7 @@ jobs:
      
 
       - name: passing  value to input
-        uses: ./action.yml
+        uses: ./
         with: 
           args: '-
             MAX_THRESHOLD ${{ env.max_threshold }}-
