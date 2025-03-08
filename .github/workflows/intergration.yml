@@ -40,7 +40,7 @@ jobs:
      
       - uses: actions/checkout@v2
       - name: calling  input
-        uses: ./github/actions/Fibonacci Comment on PR
+        uses: ./.github/actions/Fibonacci Comment on PR
         with: 
           max_threshold: '100'
           enable_fib: 'true'
