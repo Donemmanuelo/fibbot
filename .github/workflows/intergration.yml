@@ -42,9 +42,13 @@ jobs:
       - name: passing  value to input
         uses: ./action.yml
         with: 
+          args: '-
+            MAX_THRESHOLD ${{ env.max_threshold }}-
+            ENABLE_FIB ${{ env.enable_fib }}'
+        env:
           max_threshold: 100
           enable_fib: true  
-              
+                
       - name: Run Fibonacci script
         uses: donemmanuelo/fibbot@rus
         env:
