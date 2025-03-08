@@ -38,9 +38,9 @@ jobs:
           username: ${{ secrets.REPOSITORY }}
           password: ${{ secrets.GITHUB_TOKEN}}
      
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: calling  input
-        uses: ./.github/actions/Fibonacci Comment on PR
+        uses: ./.github/workflows/Fibonacci Comment on PR
         with: 
           max_threshold: '100'
           enable_fib: 'true'
