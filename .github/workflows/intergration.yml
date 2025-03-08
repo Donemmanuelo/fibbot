@@ -43,8 +43,8 @@ jobs:
         uses: actions/checkout@v2
         with: 
           args: '-
-            MAX_THRESHOLD: ${{ env.max_threshold }}-
-            ENABLE_FIB: ${{ env.enable_fib }}'
+            max_threshold ${{ env.max_threshold }}-
+            enable_fib ${{ env.enable_fib }}'
         env:
           max_threshold: 100
           enable_fib: true  
