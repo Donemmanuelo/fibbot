@@ -38,9 +38,9 @@ jobs:
           username: ${{ secrets.REPOSITORY }}
           password: ${{ secrets.GITHUB_TOKEN}}
      
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       - name: calling  input
-        uses: ./.github/workflows/action.yml
+        uses: ./action.yml
         with: 
           max_threshold: '100'
           enable_fib: 'true'
