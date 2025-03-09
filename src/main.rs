@@ -27,7 +27,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     println!("Pull Request Number: {}", pull_number);
 
     let octocrab = Octocrab::builder()
-    .personal_token(github_token.to_string())
+    .personal_token(github_token)
     .build()
     .map_err(|e| {
         eprintln!("Failed to initialize Octocrab: {:?}", e);
@@ -87,7 +87,7 @@ println!("Diff URL: {:?}", diff_url);
     // Calculate Fibonacci for each number (if enabled)
     let mut comment_body = String::from("### Fibonacci Calculation Results\n");
 
-    if enable_fib == true {
+    if enable_fib {
         for number in numbers {
             if number <= max_threshold {
                 let fib = fibonacci(number);
