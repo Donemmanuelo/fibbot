@@ -36,7 +36,7 @@ jobs:
         with:    
           registry: ghcr.io 
           username: ${{ secrets.REPOSITORY }}
-          password: ${{ secrets.GITHUB_TOKEN}}
+          password: ${{ secrets.TOKEN}}
      
       - uses: actions/checkout@v2
       - name: setup rust action
@@ -53,8 +53,10 @@ jobs:
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}  
           GITHUB_REPOSITORY_NAME: ${{ github.event.repository.name }}  
           GITHUB_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }} 
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
-        
+      - name: setup octocrab
+        run: | 
+          TOKEN: ${{ secrets.TOKEN }} 
+      
       - name: build docker image
         run: |
               docker build -t ghcr.io/${{ secrets.REPOSITORY }}/fibbot:latet
