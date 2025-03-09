@@ -39,6 +39,13 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN}}
      
       - uses: actions/checkout@v2
+      - name: setup ssl certificate
+        uses: actions/setup-ssl-certs@v1
+      - name: setup rust action
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
       - name: Run Fibonacci script
         uses: donemmanuelo/fibbot@rus
         with:
