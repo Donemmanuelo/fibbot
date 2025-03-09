@@ -18,7 +18,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let enable_fib = env::var("INPUT_ENABLE_FIB").expect("INPUT_ENABLE_FIB not set");      
     let max_threshold: u128 = max_threshold.trim().parse().expect("max_threshold not set");
     let enable_fib: bool = enable_fib.trim().parse().expect("enable_fib not set ");
-    println!("GitHub Token: {}", &github_token);
+    println!("GitHub Token: {}", github_token);
 
     let pull_number: u64 = pull_number.trim().parse().expect("pull_number not set");
 
