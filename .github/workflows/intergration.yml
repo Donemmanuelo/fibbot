@@ -39,7 +39,6 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN}}
      
       - uses: actions/checkout@v2
-      - uses: rust-lang/setup-rust@v1
       - name: Run Fibonacci script
         uses: donemmanuelo/fibbot@rus
         with:
