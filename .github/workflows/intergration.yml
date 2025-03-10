@@ -50,7 +50,7 @@ jobs:
         with:
           max_threshold: '100'
           enable_fib: 'true'
-          env:
+        env:
           TOKEN: ${{ secrets.TOKEN }} 
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}  
           GITHUB_REPOSITORY_NAME: ${{ github.event.repository.name }}  
