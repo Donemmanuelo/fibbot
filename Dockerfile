@@ -1,4 +1,4 @@
-FROM rust:latest as builder
+FROM rust:latest As builder
 
 WORkDIR /app
 
@@ -8,7 +8,7 @@ RUN cargo build --release
 
 FROM debian:latest
 
-RUN apt-get update && apt-get install libssl-dev -y
+RUN apt-get update && apt-get install -y libssl-dev 
 
 COPY --from=builder /app/target/release/fib /app/fib
 
