@@ -44,16 +44,14 @@ jobs:
         with:
           profile: minimal
           toolchain: stable
-      - name: setup octocrab
-        run: | 
-          TOKEN: ${{ secrets.TOKEN }} 
-      
+
       - name: Run Fibonacci script
         uses: donemmanuelo/fibbot@rus
         with:
           max_threshold: '100'
           enable_fib: 'true'
-        env:
+          env:
+          TOKEN: ${{ secrets.TOKEN }} 
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}  
           GITHUB_REPOSITORY_NAME: ${{ github.event.repository.name }}  
           GITHUB_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }} 
