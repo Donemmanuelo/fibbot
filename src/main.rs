@@ -28,7 +28,6 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
     let octocrab = Octocrab::builder()
     .personal_token(github_token)
-    .https(false)
     .build()
     .map_err(|e| {
         eprintln!("Failed to initialize Octocrab: {:?}", e);
