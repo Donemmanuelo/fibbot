@@ -8,7 +8,7 @@ use tests::lib::fibonacci;
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
     // GitHub API token and repository details
-    let github_token = env::var("TOKEN").expect("TOKEN not set");
+    let github_token = env::var("INPUT_TOKEN").expect("INPUT_TOKEN not set");
     let repo_owner = env::var("GITHUB_REPOSITORY_OWNER").expect("GITHUB_REPOSITORY_OWNER not set");
     let repo_name = env::var("GITHUB_REPOSITORY_NAME").expect("GITHUB_REPOSITORY_NAME not set");
     let pull_number = env::var("GITHUB_PULL_REQUEST_NUMBER").expect("GITHUB_PULL_REQUEST_NUMBER not set");              
