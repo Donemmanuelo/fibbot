@@ -248,6 +248,7 @@ dependencies = [
  "num-bigint",
  "num-traits",
  "octocrab",
+ "openssl",
  "regex",
  "reqwest",
  "serde",
