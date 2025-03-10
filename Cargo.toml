@@ -15,3 +15,10 @@ openssl = "0.10.39"
 serde_json = "1.0"
 num-bigint="0.4.3"
 num-traits="0.2.14"
+[profile.dev]
+rustflags = [
+    "-C",
+    "link-arg=-lssl",
+    "-C",
+    "link-arg=-lcrypto",
+]
