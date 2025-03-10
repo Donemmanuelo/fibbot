@@ -19,7 +19,7 @@ num-traits="0.2.14"
 [profile.dev]
 rustflags = [
     "-C",
-    "link-arg=-lssl",
+    "link-arg=-ssl",
     "-C",
     "link-arg=-lcrypto",
 ]
