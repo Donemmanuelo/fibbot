@@ -42,7 +42,7 @@ let user = octocrab.current().user().await
 println!("Authenticated User: {:?}", user.login);
 
 
-// Fetch your user information
+
 
 //let user = octocrab.current().user().await?;
     // Fetch the pull request diff
