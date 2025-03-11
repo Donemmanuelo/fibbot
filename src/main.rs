@@ -30,15 +30,9 @@ async fn main() -> Result<(), Box<dyn Error>> {
     println!("Repository Owner: {}", repo_owner);
   
     println!("Pull Request Number: {}", pull_number);
-    let mut root_store = RootCertStore::empty();
-    let mut cert_file = File::open("rustls-src/cert.pem").unwrap();
-    let mut cert_data = Vec::new();
-    cert_file.read_to_end(&mut cert_data).unwrap();
-    root_store.add_pem(&cert_data).unwrap();
-
+ 
     let octocrab = Octocrab::builder()
     .personal_token(github_token)
-    .certificates(root_store.0)
     .build()
     .map_err(|e| {
         eprintln!("Failed to initialize Octocrab: {:?}", e);
