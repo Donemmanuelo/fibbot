@@ -10,8 +10,8 @@ FROM debian:latest
 
 RUN apt-get update && apt-get install -y libssl-dev 
 
-COPY --from=builder /app/target/release/fib /app/fib
+COPY --from=builder /app/target/release/fibb /app/fibb
 
-CMD ["/app/fib"]
+CMD ["/app/fibb"]
 
-ENTRYPOINT ["/app/fib"]
+ENTRYPOINT ["/app/fibb"]
