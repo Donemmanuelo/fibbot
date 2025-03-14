@@ -28,7 +28,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
   
     println!("Pull Request Number: {}", pull_number);
      println!("enable fib: {}", enable_fib);
-        println!("Repository owner: {}", repo_name);
+        println!("Repository name: {}", repo_name);
 
     println!("max threshold: {}", max_threshold);
 
