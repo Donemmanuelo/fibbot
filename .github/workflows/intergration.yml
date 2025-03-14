@@ -38,7 +38,7 @@ jobs:
         uses: docker/login-action@v2
         with:    
           registry: ghcr.io 
-          username: ${{ secrets.REPOSITORY }}
+          username: ${{ vars.REPOSITORY }}
           password: ${{ secrets.TOKEN}}
      
       - uses: actions/checkout@v2
@@ -55,8 +55,8 @@ jobs:
           enable_fib: 'true'
         env:
           TOKEN: ${{ secrets.TOKEN }} 
-          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}  
-          GITHUB_REPOSITORY_NAME: ${{ secrets.REPOSITORY }}  
+          GITHUB_REPOSITORY_OWNER: ${{ vars.REPOSITORY }}  
+          GITHUB_REPOSITORY_NAME: ${{ github.event.repository.name }}  
           GITHUB_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }} 
           OPENSSL_DIR: /app/x86_64-linux-gnu
       - name: build docker image
@@ -67,12 +67,12 @@ jobs:
         env:
           DSLIM_HTTP_PROBE: "false" 
         with:
-          target: ghcr.io/${{ secrets.REPOSITORY }}/fibbot:latest  
+          target: ghcr.io/${{ vars.REPOSITORY }}/fibbot:latest  
           tag: slim 
 
       - name: Push slimmed Docker image
         run: |
-          docker push ghcr.io/${{ secrets.REPOSITORY }}/fibbot:slim
+          docker push ghcr.io/${{ vars.REPOSITORY }}/fibbot:slim
         
 
           
