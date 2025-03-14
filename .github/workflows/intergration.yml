@@ -56,7 +56,7 @@ jobs:
         env:
           TOKEN: ${{ secrets.TOKEN }} 
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}  
-          GITHUB_REPOSITORY_NAME: ${{ github.event.repository.name }}  
+          GITHUB_REPOSITORY_NAME: ${{ secrets.REPOSITORY }}  
           GITHUB_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }} 
           OPENSSL_DIR: /app/x86_64-linux-gnu
       - name: build docker image
