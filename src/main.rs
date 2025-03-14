@@ -27,7 +27,11 @@ async fn main() -> Result<(), Box<dyn Error>> {
     println!("Repository Owner: {}", repo_owner);
   
     println!("Pull Request Number: {}", pull_number);
- 
+     println!("enable fib: {}", enable_fib);
+        println!("Repository owner: {}", repo_name);
+
+    println!("max threshold: {}", max_threshold);
+
     let octocrab = Octocrab::builder()
     .personal_token(github_token)
     .build()
