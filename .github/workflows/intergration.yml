@@ -60,4 +60,4 @@ jobs:
         INPUT_MAX_THRESHOLD: 1000
         INPUT_ENABLE_FIB: true
       run: |
-        cargo run --release -- ${{ inputs.enable_fib }} ${{ inputs.max_threshold }}
+        cargo run --release 
