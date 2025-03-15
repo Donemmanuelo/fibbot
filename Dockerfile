@@ -1,17 +1,17 @@
-FROM rust:latest As builder
+FROM rust:latest as builder
 
 WORkDIR /app
 
-COPY . .  
-
+COPY Cargo.toml Cargo.lock ./
 RUN cargo build --release 
 
-FROM debian:latest
+COPY src ./src
 
-RUN apt-get update && apt-get install -y libssl-dev 
+RUN cargo build --release 
+FROM debian:bullseye-slim
+
+WORKDIR  /app
 
 COPY --from=builder /app/target/release/fibb /app/fibb
-
-CMD ["/app/fibb"]
 
 ENTRYPOINT ["/app/fibb"]
