@@ -40,7 +40,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: ghcr.io/${{ github.repository }}/fibonacci-comment:latest
+        tags: ghcr.io/${{ github.repository }}/fibbot:latest
 
     - name: Run Docker image
       run: |
@@ -50,4 +50,4 @@ jobs:
                    --env GITHUB_PULL_REQUEST_NUMBER=${{ github.event.number }} \
                    --env INPUT_MAX_THRESHOLD=1000 \
                    --env INPUT_ENABLE_FIB=true \
-                   ghcr.io/${{ github.repository }}/fibonacci-comment:latest true 1000
+                   ghcr.io/${{ github.repository }}/fibbot:latest true 1000
