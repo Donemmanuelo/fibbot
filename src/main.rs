@@ -15,10 +15,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let repo_name = env::var("GITHUB_REPOSITORY_NAME").expect("GITHUB_REPOSITORY_NAME not set");
     let pull_number = env::var("GITHUB_PULL_REQUEST_NUMBER").expect("GITHUB_PULL_REQUEST_NUMBER not set");              
     let args: Vec<String> = env::args().collect();
-    if args.len() < 4 {
-        eprintln!("Usage: {} <enable_fib> <max_threshold>", args[0]);
-        return Err("Invalid arguments".into());
-    }
+   
 
     let enable_fib: bool = args[1].parse().expect("enable_fib not set");
     let max_threshold: u128 = args[2].parse().expect("max_threshold not set");
