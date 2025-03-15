@@ -11,7 +11,7 @@ inputs:
     type: boolean
 runs: 
   using: 'docker' 
-  image: 'ghrc.io/${{ vars.REPOSTORY }}/fibbot:latest'
+  image: 'ghrc.io/${{ github.repository }}/fibbot:latest'
   args: 
   - ${{ inputs.enable_fib }}
   - ${{ inputs.max_threshold }}
