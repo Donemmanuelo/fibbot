@@ -17,8 +17,8 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let args: Vec<String> = env::args().collect();
    
 
-    let enable_fib: bool = args[1].parse().expect("enable_fib not set");
-    let max_threshold: u128 = args[2].parse().expect("max_threshold not set");
+    let enable_fib: bool = args[1].trim().parse().expect("enable_fib not set");
+    let max_threshold: u128 = args[2].trim().parse().expect("max_threshold not set");
 
     println!("GitHub Token: {}", github_token);
 
