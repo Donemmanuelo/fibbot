@@ -14,13 +14,12 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let repo_owner = env::var("GITHUB_REPOSITORY_OWNER").expect("GITHUB_REPOSITORY_OWNER not set");
     let repo_name = env::var("GITHUB_REPOSITORY_NAME").expect("GITHUB_REPOSITORY_NAME not set");
     let pull_number = env::var("GITHUB_PULL_REQUEST_NUMBER").expect("GITHUB_PULL_REQUEST_NUMBER not set");              
-    let args: Vec<String> = env::args().collect();
-   
-
-    let enable_fib: bool = args[1].trim().parse().expect("enable_fib not set");
-    let max_threshold: u128 = args[2].trim().parse().expect("max_threshold not set");
-
+   let max_threshold = env::var("INPUT_MAX_THRESHOLD").expect("INPUT_MAX_THRESHOLD not set");      // Maximum number for Fibonacci computation
+    let enable_fib = env::var("INPUT_ENABLE_FIB").expect("INPUT_ENABLE_FIB not set");      
+    let max_threshold: u128 = max_threshold.trim().parse().expect("max_threshold not set");
+    let enable_fib: bool = enable_fib.trim().parse().expect("enable_fib not set ");
     println!("GitHub Token: {}", github_token);
+
 
     let pull_number: u64 = pull_number.trim().parse().expect("pull_number not set");
 
