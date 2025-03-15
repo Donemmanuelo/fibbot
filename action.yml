@@ -13,7 +13,7 @@ runs:
   using: 'composite'
   steps:
     - run: |
-        cargo run --release -- ${{ inputs.enable_fib }} ${{ inputs.max_threshold }}
+        cargo run -- ${{ inputs.enable_fib }} ${{ inputs.max_threshold }}
       env:
         TOKEN: ${{ secrets.TOKEN }}
         GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
