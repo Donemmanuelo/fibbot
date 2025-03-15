@@ -52,8 +52,6 @@ jobs:
         tags: ghcr.io/${{ secrets.REPOSITORY }}/fibonacci-comment:latest
 
     - name: Run Rust project
-      run: |
-        cargo run --release -- ${{ inputs.enable_fib }} ${{ inputs.max_threshold }}
       env:
         TOKEN: ${{ secrets.TOKEN }}
         GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
@@ -61,3 +59,5 @@ jobs:
         GITHUB_PULL_REQUEST_NUMBER: ${{ github.event.number }}
         INPUT_MAX_THRESHOLD: 1000
         INPUT_ENABLE_FIB: true
+      run: |
+        cargo run --release -- ${{ inputs.enable_fib }} ${{ inputs.max_threshold }}
