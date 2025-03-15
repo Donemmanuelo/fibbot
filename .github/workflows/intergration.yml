@@ -49,7 +49,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: ghcr.io/${{ secrets.REPOSITORY }}/fibonacci-comment:latest
+        tags: ghcr.io/${{ secrets.REPOSITORY }}/fibbot:latest
 
     - name: Run Rust project
       env:
@@ -60,4 +60,4 @@ jobs:
         INPUT_MAX_THRESHOLD: 1000
         INPUT_ENABLE_FIB: true
       run: |
-        cargo run --release -- ${{ INPUT_MAX_THRESHOLD }} ${{ INPUT_ENABLE_FIB }}
+        cargo run -- ${{ inputs.enable_fib }} ${{ inputs.max_threshold }}
