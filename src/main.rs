@@ -37,7 +37,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     .map_err(|e| {
         eprintln!("Failed to initialize Octocrab: {:?}", e);
         e
-    }).unwrap();
+    })?;
 println!("request made succesfully");
 let user = octocrab.current().user().await
     .map_err(|e| {
