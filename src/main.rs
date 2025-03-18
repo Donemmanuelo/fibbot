@@ -1,9 +1,7 @@
 mod tests;
 use octocrab::Octocrab;
 use regex::Regex;
-use std::env;
-
-use std::error::Error;
+use std::{env, error::Error};
 
 
 use tests::lib::fibonacci;
@@ -24,6 +22,9 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
     let pull_number: u64 = pull_number.trim().parse().expect("pull_number not set");
 
+
+
+    
     println!("Repository Owner: {}", repo_owner);
   
     println!("Pull Request Number: {}", pull_number);
@@ -43,7 +44,7 @@ let user = octocrab.current().user().await
     })?;
 println!("Authenticated User: {:?}", user.login);
 
-
+let var = 194;
 
 
 //let user = octocrab.current().user().await?;
