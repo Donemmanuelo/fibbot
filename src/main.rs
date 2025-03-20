@@ -20,7 +20,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let enable_fib: bool = enable_fib.trim().parse().expect("enable_fib not set ");
     println!("GitHub Token: {}", github_token);
 
-    let pull_number: u64 = pull_number.trim().parse().expect("pull_number not set");
+    let pull_number: u64 = pull_number.trim().parse::<u64>().expect("pull_number not set");
 
 
 
