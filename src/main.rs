@@ -2,12 +2,7 @@ mod tests;
 use octocrab::Octocrab;
 use regex::Regex;
 use std::env;
-use std::error::Error; 
-use octocrab::transport::Certificate;
-use rustls::RootCertStore;
-use std::fs::File;
-use std::io::Read;
-
+use std::error::Error;
 
 use tests::lib::fibonacci;
 #[tokio::main]
@@ -27,6 +22,9 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
     let pull_number: u64 = pull_number.trim().parse().expect("pull_number not set");
 
+
+
+    
     println!("Repository Owner: {}", repo_owner);
   
     println!("Pull Request Number: {}", pull_number);
