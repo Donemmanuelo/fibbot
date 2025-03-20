@@ -1,9 +1,6 @@
 name: Fibonacci Comment Workflow
 
 on:
-  push:
-    branches:
-      - rus
   pull_request: 
     branches:
           - main
