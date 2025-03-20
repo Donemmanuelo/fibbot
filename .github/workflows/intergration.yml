@@ -1,9 +1,9 @@
 name: Fibonacci Comment Workflow
 
 on:
-  push: 
+  pull_request: 
     branches:
-          - rus
+          - main
 jobs:
   fibonacci-comment:
     runs-on: ubuntu-latest
