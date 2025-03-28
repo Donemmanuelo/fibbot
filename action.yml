@@ -9,7 +9,7 @@ inputs:
   enable_fib:
     description: 'Whether to enable posting the Fibonacci comment (true/false).'
     required: true
-    type: booleanz
+    type: boolean
 runs:
   using: 'composite'
   steps:

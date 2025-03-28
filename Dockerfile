@@ -1,5 +1,4 @@
 
-
 FROM rust:latest as builder
 
 WORKDIR /app

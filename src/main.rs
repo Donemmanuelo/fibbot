@@ -11,8 +11,6 @@ use std::error::Error;
 use tests::lib::fibonacci;
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
-    // GitHub API token and repository details
-
 let github_token = env::var("TOKEN").map_err(|e| {
     eprintln!("Failed to fetch TOKEN: {:?}", e);
     e
@@ -21,12 +19,10 @@ let github_token = env::var("TOKEN").map_err(|e| {
     let repo_name = env::var("GITHUB_REPOSITORY_NAME").expect("GITHUB_REPOSITORY_NAME not set");
     let pull_number = env::var("GITHUB_PULL_REQUEST_NUMBER").expect("GITHUB_PULL_REQUEST_NUMBER not set");              
    let max_threshold = env::var("INPUT_MAX_THRESHOLD").expect("INPUT_MAX_THRESHOLD not set");      // Maximum number for Fibonacci computation
-
     let enable_fib = env::var("INPUT_ENABLE_FIB").expect("INPUT_ENABLE_FIB not set");      
     let max_threshold: u128 = max_threshold.trim().parse().expect("max_threshold not set");
     let enable_fib: bool = enable_fib.trim().parse().expect("enable_fib not set ");
     println!("GitHub Token: {}", github_token);
-
 
 
     let pull_number: u64 = pull_number.trim().parse().expect("pull_number not set");
