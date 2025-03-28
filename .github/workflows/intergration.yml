@@ -1,12 +1,9 @@
 
 name: Fibonacci Comment on PR
 
-on:
-  push:
-    branches:
-      - rus
+on: 
   pull_request:
-    branches:
+    branches:   
       - main
 jobs: 
   fibonacci-comment:
@@ -21,7 +18,7 @@ jobs:
 
     - name: Cache Cargo dependencies
       uses: actions/cache@v3
-      with:  
+      with:
         path: |
           ~/.cargo/registry
           target
