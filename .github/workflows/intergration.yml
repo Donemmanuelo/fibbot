@@ -1,9 +1,10 @@
+
 name: Fibonacci Comment on PR
 
 on:
   push:
     branches: 
-      - rus
+      - main
 jobs: 
   fibonacci-comment:
     runs-on: ubuntu-latest
@@ -23,7 +24,7 @@ jobs:
           target
         key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
         restore-keys: |
-          ${{ runner.os }}-cargo-  
+          ${{ runner.os }}-cargo-
 
     - name: Install Rust
       uses: actions-rs/toolchain@v1
