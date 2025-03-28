@@ -1,2 +1,3 @@
 /target
-token-gh
+token.gh
+cargo.lock
