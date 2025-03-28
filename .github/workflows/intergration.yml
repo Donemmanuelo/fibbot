@@ -2,7 +2,7 @@ name: Fibonacci Comment on PR
 
 on: 
   pull_request:
-    branches: 
+    branches:   
       - main
 jobs: 
   fibonacci-comment:
