@@ -4,7 +4,7 @@ name: Fibonacci Comment on PR
 on:
   push:
     branches: 
-      - main
+      - rus
 jobs: 
   fibonacci-comment:
     runs-on: ubuntu-latest
