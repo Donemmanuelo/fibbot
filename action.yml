@@ -1,3 +1,4 @@
+
 name: 'Fibonacci Comment On PR'
 description: 'Posts a comment on a PR with the Fibonacci of numerical values in the diff.'
 inputs:

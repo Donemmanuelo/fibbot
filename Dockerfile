@@ -1,3 +1,4 @@
+
 FROM rust:latest as builder
 
 WORKDIR /app
@@ -14,3 +15,4 @@ WORKDIR  /app
 COPY --from=builder /app/target/release/fibb /app/fibb
 
 ENTRYPOINT ["/app/fibb"]
+
