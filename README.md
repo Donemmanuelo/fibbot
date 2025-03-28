@@ -1,1 +1,1 @@
-$FIBBOT
+FIBBOT
